@@ -3,6 +3,7 @@
 import freebase
 import json
 import sys
+import argparse
 
 class ResultFormatter(object):
 
@@ -45,8 +46,10 @@ def executeQuery(queryString):
     resultFormatter.writeEnd()
 
 def main():
-    for query in sys.argv[1:]:
-        executeQuery(query)
+    parser = argparse.ArgumentParser(description = 'Query freebase graph')
+
+    parser.parse_args()
+    executeQuery(sys.stdin.read())
 
 if __name__ == '__main__':
     main()
