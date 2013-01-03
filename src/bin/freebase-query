@@ -1,0 +1,27 @@
+#!/usr/bin/env python
+
+import freebase
+import json
+import sys
+
+def parseQuery(queryString):
+    try:
+        return json.loads(queryString)
+    except ValueError as e:
+        raise Exception('MQL query must be JSON (%s): \'%s\'' % (e, queryString))
+
+def formatResult(result):
+    return json.dumps(result)
+
+def executeQuery(queryString):
+    query = parseQuery(queryString)
+
+    for result in freebase.mqlreaditer(query):
+        print formatResult(result)
+
+def main():
+    for query in sys.argv[1:]:
+        executeQuery(query)
+
+if __name__ == '__main__':
+    main()
