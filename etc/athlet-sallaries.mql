@@ -1,0 +1,8 @@
+{
+  "type": "/base/schemastaging/athlete_extra",
+  "name": null,
+  "salary": [{
+    "salary": null,
+    "currency" : "US$"
+  }]
+}
