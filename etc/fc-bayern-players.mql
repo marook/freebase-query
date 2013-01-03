@@ -1,0 +1,10 @@
+{
+  "type": "/soccer/football_player",
+  "name": null,
+  "current_team": [{
+    "team": {
+      "name": "FC Bayern Munich"
+    }
+  }],
+  "/people/person/date_of_birth": null
+}
