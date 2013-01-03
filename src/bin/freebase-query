@@ -4,6 +4,26 @@ import freebase
 import json
 import sys
 
+class ResultFormatter(object):
+
+    def __init__(self, out):
+        self.firstResult = True
+        self.out = out
+
+    def writeStart(self):
+        self.out.write('[\n')
+
+    def writeResult(self, result):
+        if(self.firstResult):
+            self.firstResult = False
+        else:
+            self.out.write(',\n')
+
+        self.out.write(json.dumps(result))
+
+    def writeEnd(self):
+        self.out.write(']\n')
+
 def parseQuery(queryString):
     try:
         return json.loads(queryString)
@@ -16,8 +36,13 @@ def formatResult(result):
 def executeQuery(queryString):
     query = parseQuery(queryString)
 
+    resultFormatter = ResultFormatter(sys.stdout)
+    resultFormatter.writeStart()
+
     for result in freebase.mqlreaditer(query):
-        print formatResult(result)
+        resultFormatter.writeResult(result)
+
+    resultFormatter.writeEnd()
 
 def main():
     for query in sys.argv[1:]:

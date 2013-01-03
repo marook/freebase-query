@@ -1,0 +1,10 @@
+freebase-query
+
+1) Installation
+
+---------------------------------------------------------------------
+Installation
+
+To install freebase-query into your home directory type the following:
+
+$ python setup.py install --home ~/.local
