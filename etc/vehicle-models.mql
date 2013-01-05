@@ -1,0 +1,12 @@
+{
+  "type":          "/automotive/make",
+  "id":            null,
+  "/type/object/name": null,
+  "model_s": [{
+    "id":            null,
+    "/type/object/name": null,
+    "model_years": [{
+      "/automotive/model_year/year>=": "1980"
+    }]
+  }]
+}
